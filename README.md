@@ -2,8 +2,6 @@
 
 20+ checks covering industry defined security best practices across all Snowflake accounts.
 
-![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-compliance/main/docs/aws_cis_v140_console.png)
-
 ## Quick start
 
 1) Download and install Steampipe (https://steampipe.io/downloads). Or use Brew:
