@@ -1,0 +1,1 @@
+mandatory_ips = ["45.251.41.248", "45.251.41.249"] # Hardcoded for testing purpose - list for know ips for snowflake client
