@@ -5,6 +5,7 @@ benchmark "iam" {
     control.iam_user_has_password,
     control.iam_user_with_buillt_in_duo_mfa,
     control.iam_user_default_role_is_set,
+    control.iam_schema_managed_access_to_centralize_grant_management,
   ]
 }
 
@@ -66,5 +67,26 @@ control "iam_user_default_role_is_set" {
       end as reason
     from
       snowflake_user
+    EOT
+}
+
+# Use managed access schema to centralize grant management
+control "iam_schema_managed_access_to_centralize_grant_management" {
+  title       = "Snowflake recommends the default_role property for the user is set it to their functional role."
+  description = "To prevent object owners from granting access to other roles at their discretion, use managed access schemas. It prevents discretionary access control and centralizes grant management."
+  # docs = ""
+  sql = <<EOT
+    select
+      catalog_name || '.' || schema_name as resource,
+      case
+        when is_managed_access  = 'NO' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when is_managed_access  = 'NO' then catalog_name || '.' || schema_name || ' schema managed access is not set.'
+        else  catalog_name || '.' || schema_name || ' schema managed access is set.'
+      end as reason
+    from
+      snowflake_schemata
     EOT
 }
