@@ -42,5 +42,3 @@ control "use_network_policies" {
     default = var.mandatory_ips
   }
 }
-
-
