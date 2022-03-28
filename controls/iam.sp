@@ -118,8 +118,8 @@ benchmark "iam_designating_additional_users_as_account_administrators" {
 
 # Use managed access schema to centralize grant management
 control "iam_user_accountadmin_role_grants" {
-  title       = "ACCOUNTADMIN role must not be granted to more than 2 Users"
-  description = "By default, each account has one user who has been designated as an account administrator (i.e. user granted the system-defined ACCOUNTADMIN role). We recommend designating at least one other user as an account administrator. This helps ensure that your account always has at least one user who can perform account-level tasks, particularly if one of your account administrators is unable to log in."
+  title       = "At least two users must be assigned ACCOUNTADMIN role"
+  description = "By default, each account has one user who has been designated as an account administrator (i.e. user granted the system-defined ACCOUNTADMIN role). Snowflake recommend designating at least one other user as an account administrator. This helps ensure that your account always has at least one user who can perform account-level tasks, particularly if one of your account administrators is unable to log in."
   sql         = <<EOT
     with users_with_account_admin_role as
     (
@@ -139,13 +139,13 @@ control "iam_user_accountadmin_role_grants" {
     select
       account as resource,
       case
-        when count(grantee_name) = 2 then 'ok'
+        when count(grantee_name) > 1 then 'ok'
         else 'alarm'
       end as status,
       case
-        when count(grantee_name) < 2 then 'ACCOUNTADMIN role is granted to less than 2 users.'
-        when count(grantee_name) > 2 then 'ACCOUNTADMIN role is granted to more than 2 users.'
-        else 'ACCOUNTADMIN role is granted to two users.'
+        when count(grantee_name) > 1 then 'ACCOUNTADMIN role is granted to more than two users.'
+        when count(grantee_name) = 1 then 'ACCOUNTADMIN role is granted to only one user.'
+        else 'ACCOUNTADMIN role is not granted to atleast two users.'
       end as reason,
       account
     from
