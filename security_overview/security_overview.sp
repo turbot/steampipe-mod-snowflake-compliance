@@ -3,9 +3,9 @@ benchmark "security_overview" {
   description   = "TODO"
   documentation = file("./security_overview/docs/security_overview.md")
   children = [
-    benchmark.iam,
-    benchmark.monitoring,
-    benchmark.network_security
+    benchmark.security_overview_iam,
+    benchmark.security_overview_monitoring,
+    benchmark.security_overview_network_security
   ]
 }
 

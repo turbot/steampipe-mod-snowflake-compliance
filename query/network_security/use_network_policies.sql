@@ -15,9 +15,9 @@ select
     'alarm'
   end as status,
   case when has_mandatory_ips then
-    name || ' has all mandatory ips.'
+    name || ' has all mandatory IPs.'
   else
-    name || ' is missing ips: ' || array_to_string(array (
+    name || ' is missing IPs: ' || array_to_string(array (
         select
           jsonb_array_elements_text(missing_ips)), ', ') || '.'
   end as reason,

@@ -9,15 +9,16 @@ with users_with_account_admin_role as (
 )
 select
   name as resource,
+  -- TODO: Skip users without ACCOUNTADMIN role with specific reason
   case when has_password then
     'alarm'
   else
     'ok'
   end as status,
   case when has_password then
-    'Snowflake user ' || name || ' has password set.'
+    name || ' has password set.'
   else
-    'Snowflake user ' || name || ' does not have password set.'
+    name || ' does not have password set.'
   end as reason,
   account
 from
@@ -28,4 +29,3 @@ where
       *
     from
       users_with_account_admin_role);
-

@@ -19,13 +19,7 @@ select
   else
     'alarm'
   end as status,
-  case when count(grantee_name) > 1 then
-    'ACCOUNTADMIN role is granted to more than two users.'
-  when count(grantee_name) = 1 then
-    'ACCOUNTADMIN role is granted to only one user.'
-  else
-    'ACCOUNTADMIN role is not granted to atleast two users.'
-  end as reason,
+  'ACCOUNTADMIN role is granted to ' || count(grantee_name) || ' user(s).' as reason,
   account
 from
   users_with_account_admin_role

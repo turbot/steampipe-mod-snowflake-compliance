@@ -6,11 +6,10 @@ select
     'alarm'
   end as status,
   case when ext_authn_duo then
-    name || ' has Built-in Duo MFA.'
+    name || ' built-in Duo MFA enabled.'
   else
-    name || ' does not have Built-in Duo MFA.'
+    name || ' built-in Duo MFA not enabled.'
   end as reason,
   account
 from
   snowflake_user;
-

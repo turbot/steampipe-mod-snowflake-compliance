@@ -3,8 +3,7 @@ with users_with_account_admin_role as (
     role,
     granted_to,
     grantee_name,
-    granted_by,
-    created_on
+    granted_by
   from
     snowflake_role_grant
   where
@@ -19,12 +18,11 @@ select
     'alarm'
   end as status,
   case when email != '' then
-    name || ' have email address set.'
+    name || ' email address set.'
   else
-    name || ' does not have email address set.'
+    name || ' email address not set.'
   end as reason,
   su.account
 from
   snowflake_user as su
   inner join users_with_account_admin_role as sua on su.name = sua.grantee_name;
-
