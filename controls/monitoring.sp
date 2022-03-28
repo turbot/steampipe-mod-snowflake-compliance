@@ -21,10 +21,39 @@ control "monitoring_users_with_password" {
   title       = "Users that have password"
   description = "For users who don't require a password in Snowflake, set the password property to null. This will ensure that the password as an authentication method isn't available to those users, and they can't set the password themselves."
   # docs = ""
-  sql = query.password_last_set_time_age.sql
+  # sql = query.password_last_set_time_age.sql
+  sql = <<EOT
+    select
+      name as resource,
+      case
+        when now()::date - password_last_set_time::date > 90 then 'alarm'
+        else 'ok'
+      end as status,
+      name || ' password was changed ' || (now()::date - password_last_set_time::date) || ' days ago'::text as reason
+    from
+      snowflake_user
+    where
+      has_password and password_last_set_time is not null;
+  EOT
 }
 
 query "password_last_set_time_age" {
+  sql = <<EOT
+    select
+      name as resource,
+      case
+        when now()::date - password_last_set_time::date > 90 then 'alarm'
+        else 'ok'
+      end as status,
+      name || ' password was changed ' || (now()::date - password_last_set_time::date) || ' days ago'::text as reason
+    from
+      snowflake_user
+    where
+      has_password and password_last_set_time is not null;
+  EOT
+}
+
+query "iam_user_with_password_has_mfa" {
   sql = <<EOT
     select
       name as resource,
