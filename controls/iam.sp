@@ -12,7 +12,7 @@ benchmark "iam_best_practices" {
   ]
 }
 
-# Shall we restrict such queries by no of days we are looking for
+# https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#managing-users-with-federated-authentication-enabled
 control "iam_user_has_password" {
   title       = "For users who don't require a password in Snowflake, set the password property to null."
   description = "For users who don't require a password in Snowflake, set the password property to null. This will ensure that the password as an authentication method isn't available to those users, and they can't set the password themselves."
@@ -24,18 +24,29 @@ control "iam_user_has_password" {
         else 'ok'
       end as status,
       case
-        when has_password then name || ' has password set.'
-        else name || ' does not have password set.'
+        when has_password then 'Snowflake user ' || name || ' has password set.'
+        else 'Snowflake user ' || name || ' does not have password set.'
       end as reason,
       account
     from
       snowflake_user
+    where
+      name not in
+      (
+        select
+          grantee_name
+        from
+          snowflake_role_grant
+        where
+          role = 'ACCOUNTADMIN'
+          and granted_to = 'USER'
+      )
     EOT
 }
 
 control "iam_user_with_buillt_in_duo_mfa" {
-  title       = "Snowflake recommends always using MFA as it provides an additional layer of security for user access."
-  description = "Built-in Duo MFA: Snowflake offers a built-in MFA powered by Duo Security. Use it only when you are not integrating with an Identity Provider."
+  title       = "Snowflake recommends always using MFA as it provides an additional layer of security."
+  description = "Built-in Duo MFA: Snowflake offers a built-in MFA powered by Duo Security."
   sql         = <<EOT
     select
       name as resource,
@@ -107,7 +118,7 @@ benchmark "iam_designating_additional_users_as_account_administrators" {
 
 # Use managed access schema to centralize grant management
 control "iam_user_accountadmin_role_grants" {
-  title       = "ACCOUNTADMIN admin role must not be granted to more than 2 Users"
+  title       = "ACCOUNTADMIN role must not be granted to more than 2 Users"
   description = "By default, each account has one user who has been designated as an account administrator (i.e. user granted the system-defined ACCOUNTADMIN role). We recommend designating at least one other user as an account administrator. This helps ensure that your account always has at least one user who can perform account-level tasks, particularly if one of your account administrators is unable to log in."
   sql         = <<EOT
     with users_with_account_admin_role as
@@ -144,7 +155,7 @@ control "iam_user_accountadmin_role_grants" {
 }
 
 control "iam_user_accountadmin_role_must_not_be_default_role" {
-  title       = "ACCOUNTADMIN admin role must not set as the default role."
+  title       = "ACCOUNTADMIN role must not set as the default role for users."
   description = "Grant the ACCOUNTADMIN role to the user(s), but do not set this role as their default. Instead, designate a lower-level administrative role (e.g. SYSADMIN) or custom role as their default. This helps prevent account administrators from inadvertently using the ACCOUNTADMIN role to create objects."
   sql         = <<EOT
     select
@@ -164,7 +175,7 @@ control "iam_user_accountadmin_role_must_not_be_default_role" {
 }
 
 control "iam_user_with_accountadmin_role_have_email" {
-  title       = "Ensure an email address is specified for each user with ACCOUNTADMIN role."
+  title       = "Ensure an email address is specified for users with ACCOUNTADMIN role."
   description = "Snowflake recommendsto associate an actual person's email address to ACCOUNTADMIN users, so that Snowflake Support knows who to contact in an urgent situation."
   sql         = <<EOT
     with users_with_account_admin_role as
