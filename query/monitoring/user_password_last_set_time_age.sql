@@ -5,7 +5,8 @@ select
   else
     'ok'
   end as status,
-  name || ' password was changed ' || (now()::date - password_last_set_time::date) || ' days ago'::text as reason
+  name || ' password was changed ' || (now()::date - password_last_set_time::date) || ' days ago.' as reason,
+  account
 from
   snowflake_user
 where

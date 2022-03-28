@@ -1,11 +1,12 @@
 variable "mandatory_ips" {
   type        = list(string)
+  default     = ["0."]
   description = "A list of IPs allowed in Snowflake network policies."
 }
 
 benchmark "network_security" {
-  title       = "Network Security Best Practices"
-  description = "Network security or isolation provides the first line of defense for your Snowflake account."
+  title       = "Network Security"
+  description = "Network security or isolation provides the first line of defense for Snowflake account."
   children = [
     control.network_security_use_network_policies,
     control.network_security_use_private_connectivity,
