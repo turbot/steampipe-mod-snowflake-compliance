@@ -20,9 +20,7 @@ benchmark "monitoring" {
 control "monitoring_users_with_password" {
   title       = "Users that have password"
   description = "For users who don't require a password in Snowflake, set the password property to null. This will ensure that the password as an authentication method isn't available to those users, and they can't set the password themselves."
-  # docs = ""
-  # sql = query.password_last_set_time_age.sql
-  sql = <<EOT
+  sql         = <<EOT
     select
       name as resource,
       case
