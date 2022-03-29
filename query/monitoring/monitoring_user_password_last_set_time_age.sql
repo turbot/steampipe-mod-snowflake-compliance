@@ -12,3 +12,4 @@ from
 where
   has_password
   and password_last_set_time is not null;
+

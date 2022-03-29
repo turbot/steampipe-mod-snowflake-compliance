@@ -15,7 +15,7 @@ benchmark "security_overview_monitoring" {
 control "security_overview_monitoring_users_for_password_rotation" {
   title       = "User passwords should be rotated at regular intervals"
   description = "User passwords should be rotated at regular intervals to remain compliant."
-  sql         = query.user_password_last_set_time_age.sql
+  sql         = query.monitoring_user_password_last_set_time_age.sql
   param "password_rotation_age" {
     default = var.password_rotation_age
   }

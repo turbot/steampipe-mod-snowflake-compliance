@@ -26,3 +26,4 @@ select
 from
   snowflake_user as su
   inner join users_with_account_admin_role as sua on su.name = sua.grantee_name;
+
