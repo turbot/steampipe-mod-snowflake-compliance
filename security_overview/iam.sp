@@ -1,6 +1,7 @@
 benchmark "security_overview_iam" {
-  title       = "IAM"
-  description = "Once your Snowflake account is accessible, the next step in gaining access to Snowflake is to authenticate the user. Users must be created in Snowflake prior to any access. Once the user is authenticated, a session is created with roles used to authorize access in Snowflake. \nThis section covers best practices for: \n- Managing users and roles\n- Authentication and single sign-on\n- Sessions\n- Object-level access control (authorization)\n- Column-level access control\n- Row-level access control"
+  title         = "Identity and Access Management"
+  description   = "Snowflake IAM best practises."
+  documentation = file("./security_overview/docs/iam.md")
   children = [
     control.security_overview_iam_user_has_password,
     control.security_overview_iam_user_with_buillt_in_duo_mfa,

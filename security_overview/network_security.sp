@@ -5,8 +5,9 @@ variable "mandatory_ips" {
 }
 
 benchmark "security_overview_network_security" {
-  title       = "Network Security"
-  description = "Network security or isolation provides the first line of defense for Snowflake account."
+  title         = "Network Security"
+  description   = "Network security or isolation provides the first line of defense for Snowflake account."
+  documentation = file("./security_overview/docs/network_security.md")
   children = [
     control.security_overview_network_security_use_network_policies,
     control.security_overview_network_security_use_private_connectivity,

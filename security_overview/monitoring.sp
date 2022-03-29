@@ -5,8 +5,9 @@ variable "password_rotation_age" {
 }
 
 benchmark "security_overview_monitoring" {
-  title       = "Monitoring"
-  description = "Once your Snowflake account is accessible, the next step in gaining access to Snowflake is to authenticate the user. Users must be created in Snowflake prior to any access. Once the user is authenticated, a session is created with roles used to authorize access in Snowflake. \nThis section covers best practices for: \n- Managing users and roles\n- Authentication and single sign-on\n- Sessions\n- Object-level access control (authorization)\n- Column-level access control\n- Row-level access control"
+  title         = "Monitoring"
+  description   = "Monitor the usage of Snowflake to meet organization's audit and compliance requirements."
+  documentation = file("./security_overview/docs/monitoring.md")
   children = [
     control.security_overview_monitoring_users_for_password_rotation
   ]
