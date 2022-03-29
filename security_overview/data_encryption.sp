@@ -23,7 +23,7 @@ control "security_overview_data_encryption_automatic_cmk_rotation" {
 }
 control "security_overview_data_encryption_tri_secret_secure_in_database_replication" {
   title       = "Enable Tri-Secret Secure in the target account when using the database Replication"
-  description = "Remember to enable Tri-Secret Secure in the target account when using the Replication feature to replicate a database to another account."
+  description = "Enable Tri-Secret Secure in the target account when using the Replication feature to replicate a database to another account."
   sql         = query.manual_control.sql
 }
 control "security_overview_data_encryption_enable_periodic_rekeying" {
@@ -34,6 +34,6 @@ control "security_overview_data_encryption_enable_periodic_rekeying" {
 
 control "security_overview_data_encryption_use_builtin_encryption_functions" {
   title       = "Use built-in encryption functions in addition to the transparent encryption to encrypt/decrypt certain columns"
-  description = "If you want to encrypt/decrypt certain columns in addition to the transparent encryption provided by Snowflake, then use the built-in encryption functions."
+  description = "To encrypt/decrypt certain columns in addition to the transparent encryption provided by Snowflake, use the built-in encryption functions."
   sql         = query.manual_control.sql
 }
