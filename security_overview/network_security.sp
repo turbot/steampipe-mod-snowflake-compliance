@@ -12,7 +12,7 @@ benchmark "security_overview_network_security" {
     control.security_overview_network_security_use_network_policies,
     control.security_overview_network_security_use_private_connectivity,
     control.security_overview_network_security_allow_firewall_to_connect_client_applications,
-    control.security_overview_network_security_add_snowflake_ip_to_your_storage_policy_firewall_rules,
+    control.security_overview_network_security_add_snowflake_ip_policy_firewall_rules,
   ]
 }
 
@@ -40,9 +40,9 @@ control "security_overview_network_security_allow_firewall_to_connect_client_app
   sql           = query.manual_control.sql
 }
 
-control "security_overview_network_security_add_snowflake_ip_to_your_storage_policy_firewall_rules" {
+control "security_overview_network_security_add_snowflake_ip_policy_firewall_rules" {
   title         = "Allow Snowflake to access your cloud storage location"
   description   = "Allow Snowflake to access your cloud storage location for bulk loading/unloading data using COPY by adding Snowflake VPC id for AWS and/or VNet Subnet ids for Azure to your storage policy or firewall rules."
-  documentation = file("./security_overview/docs/network_security_add_snowflake_ip_to_your_storage_policy_firewall_rules.md")
+  documentation = file("./security_overview/docs/network_security_add_snowflake_ip_policy_firewall_rules.md")
   sql           = query.manual_control.sql
 }
