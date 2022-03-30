@@ -1,4 +1,4 @@
-variable "mandatory_ips" {
+variable "allowed_ips" {
   type        = list(string)
   default     = ["0."]
   description = "A list of IPs allowed in Snowflake network policies."
@@ -21,8 +21,8 @@ control "security_overview_network_security_use_network_policies" {
   description   = "The network policy restricts the list of user IP addresses when exchanging an authorization code for an access or refresh token and when using a refresh token to obtain a new access token."
   documentation = file("./security_overview/docs/network_security_use_network_policies.md")
   sql           = query.use_network_policies.sql
-  param "mandatory_ips" {
-    default = var.mandatory_ips
+  param "allowed_ips" {
+    default = var.allowed_ips
   }
 }
 
