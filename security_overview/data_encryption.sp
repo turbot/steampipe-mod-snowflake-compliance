@@ -18,10 +18,9 @@ control "security_overview_data_encryption_use_tri_secret_secure" {
   sql           = query.manual_control.sql
 }
 control "security_overview_data_encryption_automatic_cmk_rotation" {
-  title         = "Use automatic key rotation for the CMK as provided by the cloud provider"
-  description   = "Use automatic key rotation for the CMK as provided by the cloud provider (such as AWS KMS)."
-  documentation = file("./security_overview/docs/security_overview_data_encryption_use_tri_secret_secure.md")
-  sql           = query.manual_control.sql
+  title       = "Use automatic key rotation for the CMK as provided by the cloud provider"
+  description = "Use automatic key rotation for the CMK as provided by the cloud provider (such as AWS KMS)."
+  sql         = query.manual_control.sql
 }
 control "security_overview_data_encryption_tri_secret_secure_in_database_replication" {
   title         = "Enable Tri-Secret Secure in the target account when using the database Replication"
