@@ -47,13 +47,13 @@ steampipe check all
 Run a single benchmark:
 
 ```shell
-steampipe check benchmark.cis_v140
+steampipe check benchmark.security_overview_iam
 ```
 
 Run a specific control:
 
 ```shell
-steampipe check control.cis_v140_2_1_1
+steampipe check control.security_overview_iam_user_default_role_is_set
 ```
 
 ### Credentials
@@ -62,7 +62,20 @@ This mod uses the credentials configured in the [Steampipe Snowflake plugin](htt
 
 ### Configuration
 
-No extra configuration is required.
+Several benchmarks have [input variables](https://steampipe.io/docs/using-steampipe/mod-variables) that can be configured to better match your environment and requirements. Each variable has a default defined in its source file, e.g., `security_overview/network_security.sp`, but these can be overriden in several ways:
+
+- Copy and rename the `steampipe.spvars.example` file to `steampipe.spvars`, and then modify the variable values inside that file
+- Pass in a value on the command line:
+  ```shell
+  steampipe check benchmark.security_overview_network_security --var 'allowed_ips=["45.251.41.248", "45.251.41.249"]'
+  ```
+- Set an environment variable:
+  ```shell
+  SP_VAR_allowed_ips='["45.251.41.248", "45.251.41.249"]' steampipe check benchmark.security_overview_network_security
+  ```
+  - Note: When using environment variables, if the variable is defined in `steampipe.spvars` or passed in through the command line, either of those will take precedence over the environment variable value. For more information on variable definition precedence, please see the link below.
+
+These are only some of the ways you can set variables. For a full list, please see [Passing Input Variables](https://steampipe.io/docs/using-steampipe/mod-variables#passing-input-variables).
 
 ## Get involved
 

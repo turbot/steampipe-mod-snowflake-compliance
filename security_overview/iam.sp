@@ -3,7 +3,7 @@ benchmark "security_overview_iam" {
   description   = "Snowflake IAM best practises."
   documentation = file("./security_overview/docs/iam.md")
   children = [
-    control.security_overview_iam_user_has_password,
+    control.security_overview_iam_user_without_accountadmin_role_password_is_not_set,
     control.security_overview_iam_user_with_buillt_in_duo_mfa,
     control.security_overview_iam_user_default_role_is_set,
     control.security_overview_iam_schema_managed_access,
@@ -14,11 +14,11 @@ benchmark "security_overview_iam" {
 }
 
 # https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#managing-users-with-federated-authentication-enabled
-control "security_overview_iam_user_has_password" {
+control "security_overview_iam_user_without_accountadmin_role_password_is_not_set" {
   title         = "Disable Snowflake authentication for all non-administrator users"
   description   = "For users who don't require a password in Snowflake, set the password property to null. This will ensure that the password as an authentication method isn't available to those users, and they can't set the password themselves."
-  documentation = file("./security_overview/docs/iam_user_has_password.md")
-  sql           = query.iam_user_has_password.sql
+  documentation = file("./security_overview/docs/iam_user_without_accountadmin_role_password_is_not_set.md")
+  sql           = query.iam_user_without_accountadmin_role_password_is_not_set.sql
 }
 
 control "security_overview_iam_user_with_buillt_in_duo_mfa" {
