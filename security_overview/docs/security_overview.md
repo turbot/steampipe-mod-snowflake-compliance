@@ -2,10 +2,4 @@ To obtain the latest version of the official guide, please visit [Snowflake secu
 
 ## Overview
 
-The Snowflake security overview and best practices document provide an overview of security features and best practice guidelines for securing your data in Snowflake.
-
-Snowflake secures customer data using defense in depth with three security layers.
-
-- Network Security
-- Identity and Access Management
-- Data Encryption
+The Snowflake security overview and best practices document provide an overview of security features and best practice guidelines for securing data in Snowflake.
