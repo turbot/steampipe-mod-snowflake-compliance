@@ -15,7 +15,7 @@ mod "snowflake_compliance" {
 
   requires {
     plugin "snowflake" {
-      version = "0.0.1"
+      version = "0.0.2"
     }
   }
 }
