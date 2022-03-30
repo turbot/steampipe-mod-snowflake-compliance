@@ -10,7 +10,7 @@ with users_with_account_admin_role as (
 select
   name as resource,
   case
-    when name not in (select * from users_with_account_admin_role) then 'skip'
+    when name in (select * from users_with_account_admin_role) then 'skip'
     when has_password then 'alarm'
     else 'ok'
   end as status,
