@@ -1,5 +1,5 @@
-# Hardcoded for testing purpose - list for know IPs for Snowflake client
-mandatory_ips = ["45.251.41.248", "45.251.41.249"]
+# List of known IPs for Snowflake client
+allowed_ips = ["45.251.41.248", "45.251.41.249"]
 
 # Maximum number of days users may retain same password for use.
 password_rotation_age = 90
