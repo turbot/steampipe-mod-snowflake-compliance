@@ -1,9 +1,6 @@
 with users_with_account_admin_role as (
   select
-    role,
-    granted_to,
-    grantee_name,
-    granted_by
+    grantee_name
   from
     snowflake_role_grant
   where
@@ -12,18 +9,17 @@ with users_with_account_admin_role as (
 )
 select
   name as resource,
-  case when email != '' then
-    'ok'
-  else
-    'alarm'
+  case
+    when name not in (select * from users_with_account_admin_role) then 'skip'
+    when email != '' then 'ok'
+    else 'alarm'
   end as status,
-  case when email != '' then
-    name || ' email address set.'
-  else
-    name || ' email address not set.'
+  case
+    when name not in (select * from users_with_account_admin_role) then name || ' does not have ACCOUNTADMIN role.'
+    when email != '' then name || ' email address set.'
+    else name || ' email address not set.'
   end as reason,
-  su.account
+  account
 from
-  snowflake_user as su
-  inner join users_with_account_admin_role as sua on su.name = sua.grantee_name;
+  snowflake_user;
 

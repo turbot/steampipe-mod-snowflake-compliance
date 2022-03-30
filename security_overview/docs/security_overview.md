@@ -1,4 +1,4 @@
-To obtain the latest version of the official guide, please visit [SNOWFLAKE SECURITY OVERVIEW AND BEST PRACTICES](https://community.snowflake.com/s/article/Snowflake-Security-Overview-and-Best-Practices).
+To obtain the latest version of the official guide, please visit [Snowflake security overview and best practices](https://community.snowflake.com/s/article/Snowflake-Security-Overview-and-Best-Practices).
 
 ## Overview
 
@@ -9,9 +9,3 @@ Snowflake secures customer data using defense in depth with three security layer
 - Network Security
 - Identity and Access Management
 - Data Encryption
-
-### Monitoring
-
-Monitor the usage of Snowflake to meet organization’s audit and compliance requirements.
-
-Every Snowflake account comes with a system-defined, read-only shared database named `SNOWFLAKE`. It has a schema named `ACCOUNT_USAGE` containing views that provide access to one year of audit logs.

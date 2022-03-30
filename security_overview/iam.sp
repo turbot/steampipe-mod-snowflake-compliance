@@ -15,15 +15,17 @@ benchmark "security_overview_iam" {
 
 # https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#managing-users-with-federated-authentication-enabled
 control "security_overview_iam_user_has_password" {
-  title       = "Disable Snowflake authentication for all non-administrator users"
-  description = "For users who don't require a password in Snowflake, set the password property to null. This will ensure that the password as an authentication method isn't available to those users, and they can't set the password themselves."
-  sql         = query.iam_user_has_password.sql
+  title         = "Disable Snowflake authentication for all non-administrator users"
+  description   = "For users who don't require a password in Snowflake, set the password property to null. This will ensure that the password as an authentication method isn't available to those users, and they can't set the password themselves."
+  documentation = file("./security_overview/docs/iam_user_has_password.md")
+  sql           = query.iam_user_has_password.sql
 }
 
 control "security_overview_iam_user_with_buillt_in_duo_mfa" {
-  title       = "Enable MFA for users to provide an additional layer of security"
-  description = "Snowflake supports multi-factor authentication (i.e. MFA) to provide increased login security for users connecting to Snowflake. MFA support is provided as an integrated Snowflake feature, powered by the Duo Securityservice, which is managed completely by Snowflake."
-  sql         = query.iam_user_with_built_in_duo_mfa.sql
+  title         = "Enable MFA for users to provide an additional layer of security"
+  description   = "Snowflake supports multi-factor authentication (i.e. MFA) to provide increased login security for users connecting to Snowflake. MFA support is provided as an integrated Snowflake feature, powered by the Duo Securityservice, which is managed completely by Snowflake."
+  documentation = file("./security_overview/docs/iam_user_with_buillt_in_duo_mfa.md")
+  sql           = query.iam_user_with_built_in_duo_mfa.sql
 }
 
 control "security_overview_iam_user_default_role_is_set" {
@@ -32,11 +34,12 @@ control "security_overview_iam_user_default_role_is_set" {
   sql         = query.iam_user_default_role_is_set.sql
 }
 
-# Use managed access schema to centralize grant management
+# https://docs.snowflake.com/en/user-guide/security-access-control-considerations.html#centralizing-grant-management-using-managed-access-schemas
 control "security_overview_iam_schema_managed_access" {
-  title       = "Use managed access schemas to centralize grant management"
-  description = "Managed access schemas improve security by locking down privilege management on objects. In regular (i.e. non-managed) schemas, object owners (i.e. a role with the OWNERSHIP privilege on an object) can grant access on their objects to other roles, with the option to further grant those roles the ability to manage object grants. With managed access schemas, object owners lose the ability to make grant decisions. Only the schema owner (i.e. the role with the OWNERSHIP privilege on the schema) or a role with the MANAGE GRANTS privilege can grant privileges on objects in the schema, including future grants, centralizing privilege management."
-  sql         = query.iam_schema_managed_access.sql
+  title         = "Use managed access schemas to centralize grant management"
+  description   = "Managed access schemas improve security by locking down privilege management on objects. In regular (i.e. non-managed) schemas, object owners (i.e. a role with the OWNERSHIP privilege on an object) can grant access on their objects to other roles, with the option to further grant those roles the ability to manage object grants. With managed access schemas, object owners lose the ability to make grant decisions. Only the schema owner (i.e. the role with the OWNERSHIP privilege on the schema) or a role with the MANAGE GRANTS privilege can grant privileges on objects in the schema, including future grants, centralizing privilege management."
+  documentation = file("./security_overview/docs/iam_schema_managed_access.md")
+  sql           = query.iam_schema_managed_access.sql
 }
 
 control "security_overview_iam_user_accountadmin_role_grants" {
