@@ -52,7 +52,7 @@ control "security_overview_iam_two_users_accountadmin_role" {
 control "security_overview_iam_user_accountadmin_must_not_be_default_role" {
   title       = "ACCOUNTADMIN role must not be set as the default role for users"
   description = "Grant the ACCOUNTADMIN role to the user(s), but do not set this role as their default. Instead, designate a lower-level administrative role (e.g. SYSADMIN) or custom role as their default. This helps prevent account administrators from inadvertently using the ACCOUNTADMIN role to create objects."
-  sql         = query.iam_user_deault_role_must_not_be_accountadmin.sql
+  sql         = query.iam_user_default_role_must_not_be_accountadmin.sql
 }
 
 control "security_overview_iam_user_with_accountadmin_role_have_email" {
