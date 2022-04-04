@@ -35,7 +35,7 @@ control "security_overview_network_security_network_policy_allowed_list_set" {
 }
 
 control "security_overview_network_security_network_policy_blocked_list_set" {
-  title         = "Use network policies blocked list to deny access specific list of IPv4 addresses"
+  title         = "Use network policies blocked list to deny access to specific list of IPv4 addresses"
   description   = "The network policy restricts the list of user IP addresses when exchanging an authorization code for an access or refresh token and when using a refresh token to obtain a new access token."
   documentation = file("./security_overview/docs/network_security_network_policy_blocked_list_set.md")
   sql           = query.network_policy_blocked_list_set.sql

@@ -4,7 +4,7 @@ repository: "https://github.com/turbot/steampipe-mod-snowflake-compliance"
 
 # Snowflake Compliance Mod
 
-Run individual configuration, compliance and security controls or full compliance benchmarks for `Security overview and best practice` across all your Snowflake accounts.
+Run individual configuration, compliance and security controls or full compliance benchmarks for `Security Overview and Best Practices` across all your Snowflake accounts.
 
 ![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_cis_v140_console.png)
 
@@ -12,7 +12,7 @@ Run individual configuration, compliance and security controls or full complianc
 
 [Snowflake](https://snowflake.com/) is a single, integrated platform delivered as-a-service. It features storage, compute, and global services layers that are physically separated but logically integrated. Data workloads scale independently from one another, making it an ideal platform for data warehousing, data lakes, data engineering, data science, modern data sharing, and developing data applications.
 
-[Snowflake security overview and best practices](https://community.snowflake.com/s/article/Snowflake-Security-Overview-and-Best-Practices) provides an overview of security features and best practice guidelines for securing your data in Snowflake.
+[Snowflake Security Overview and Best Practices](https://community.snowflake.com/s/article/Snowflake-Security-Overview-and-Best-Practices) provides an overview of security features and best practice guidelines for securing your data in Snowflake.
 
 [Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
 
