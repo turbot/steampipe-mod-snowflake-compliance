@@ -67,11 +67,11 @@ Several benchmarks have [input variables](https://steampipe.io/docs/using-steamp
 - Copy and rename the `steampipe.spvars.example` file to `steampipe.spvars`, and then modify the variable values inside that file
 - Pass in a value on the command line:
   ```shell
-  steampipe check benchmark.security_overview_network_security --var 'allowed_ips=["45.251.41.248", "45.251.41.249"]'
+  steampipe check benchmark.security_overview_network_security --var 'allowed_ips=["192.168.1.0/24", "172.10.1.0/24"]'
   ```
 - Set an environment variable:
   ```shell
-  SP_VAR_allowed_ips='["45.251.41.248", "45.251.41.249"]' steampipe check benchmark.security_overview_network_security
+  SP_VAR_allowed_ips='["192.168.1.0/24", "172.10.1.0/24"]' steampipe check benchmark.security_overview_network_security
   ```
   - Note: When using environment variables, if the variable is defined in `steampipe.spvars` or passed in through the command line, either of those will take precedence over the environment variable value. For more information on variable definition precedence, please see the link below.
 
