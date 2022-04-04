@@ -4,7 +4,7 @@ benchmark "security_overview_iam" {
   documentation = file("./security_overview/docs/iam.md")
   children = [
     control.security_overview_iam_user_without_accountadmin_role_password_is_not_set,
-    control.security_overview_iam_user_with_buillt_in_duo_mfa,
+    control.security_overview_iam_user_with_built_in_duo_mfa,
     control.security_overview_iam_user_default_role_is_set,
     control.security_overview_iam_schema_managed_access,
     control.security_overview_iam_user_accountadmin_role_grants,
@@ -21,10 +21,10 @@ control "security_overview_iam_user_without_accountadmin_role_password_is_not_se
   sql           = query.iam_user_without_accountadmin_role_password_is_not_set.sql
 }
 
-control "security_overview_iam_user_with_buillt_in_duo_mfa" {
+control "security_overview_iam_user_with_built_in_duo_mfa" {
   title         = "Enable MFA for users to provide an additional layer of security"
   description   = "Snowflake supports multi-factor authentication (i.e. MFA) to provide increased login security for users connecting to Snowflake. MFA support is provided as an integrated Snowflake feature, powered by the Duo Securityservice, which is managed completely by Snowflake."
-  documentation = file("./security_overview/docs/iam_user_with_buillt_in_duo_mfa.md")
+  documentation = file("./security_overview/docs/iam_user_with_built_in_duo_mfa.md")
   sql           = query.iam_user_with_built_in_duo_mfa.sql
 }
 

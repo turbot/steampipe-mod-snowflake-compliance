@@ -4,6 +4,12 @@ variable "allowed_ips" {
   description = "A list of IPs allowed in Snowflake network policies."
 }
 
+variable "blocked_ips" {
+  type        = list(string)
+  default     = ["0."]
+  description = "A list of IPs that are denied access in Snowflake network policies."
+}
+
 benchmark "security_overview_network_security" {
   title         = "Network Security"
   description   = "Network security or isolation provides the first line of defense for Snowflake account."
