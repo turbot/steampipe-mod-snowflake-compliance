@@ -13,7 +13,8 @@ mod "snowflake_compliance" {
     image       = "/images/mods/turbot/snowflake-compliance-social-graphic.png"
   }
 
-  requires {
+  require {
+    steampipe = "0.13.1"
     plugin "snowflake" {
       version = "0.0.2"
     }
