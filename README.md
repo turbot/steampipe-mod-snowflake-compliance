@@ -2,6 +2,8 @@
 
 20+ checks covering industry defined security best practices across all Snowflake accounts.
 
+![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/images/snowflake_compliance_mod_output.png)
+
 ## Quick start
 
 1. Download and install Steampipe (https://steampipe.io/downloads). Or use Brew:
