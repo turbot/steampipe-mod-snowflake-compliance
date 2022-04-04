@@ -3,29 +3,29 @@ benchmark "security_overview_iam" {
   description   = "Snowflake IAM best practises."
   documentation = file("./security_overview/docs/iam.md")
   children = [
-    control.security_overview_iam_user_without_accountadmin_role_password_is_not_set,
+    control.security_overview_iam_user_without_accountadmin_role_password_not_set,
     control.security_overview_iam_user_with_built_in_duo_mfa,
     control.security_overview_iam_user_default_role_is_set,
     control.security_overview_iam_schema_managed_access,
-    control.security_overview_iam_user_accountadmin_role_grants,
+    control.security_overview_iam_two_users_accountadmin_role,
     control.security_overview_iam_user_accountadmin_must_not_be_default_role,
     control.security_overview_iam_user_with_accountadmin_role_have_email
   ]
 }
 
 # https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#managing-users-with-federated-authentication-enabled
-control "security_overview_iam_user_without_accountadmin_role_password_is_not_set" {
+control "security_overview_iam_user_without_accountadmin_role_password_not_set" {
   title         = "Disable Snowflake authentication for all non-administrator users"
   description   = "For users who don't require a password in Snowflake, set the password property to null. This will ensure that the password as an authentication method isn't available to those users, and they can't set the password themselves."
   documentation = file("./security_overview/docs/iam_user_without_accountadmin_role_password_is_not_set.md")
-  sql           = query.iam_user_without_accountadmin_role_password_is_not_set.sql
+  sql           = query.iam_user_without_accountadmin_role_password_not_set.sql
 }
 
 control "security_overview_iam_user_with_built_in_duo_mfa" {
   title         = "Enable MFA for users to provide an additional layer of security"
   description   = "Snowflake supports multi-factor authentication (i.e. MFA) to provide increased login security for users connecting to Snowflake. MFA support is provided as an integrated Snowflake feature, powered by the Duo Securityservice, which is managed completely by Snowflake."
-  documentation = file("./security_overview/docs/iam_user_with_built_in_duo_mfa.md")
-  sql           = query.iam_user_with_built_in_duo_mfa.sql
+  documentation = file("./security_overview/docs/iam_user_built_in_duo_mfa_enabled.md")
+  sql           = query.iam_user_with_built_in_duo_mfa_enabled.sql
 }
 
 control "security_overview_iam_user_default_role_is_set" {
@@ -43,7 +43,7 @@ control "security_overview_iam_schema_managed_access" {
 }
 
 # https://docs.snowflake.com/en/user-guide/admin-user-management.html
-control "security_overview_iam_user_accountadmin_role_grants" {
+control "security_overview_iam_two_users_accountadmin_role" {
   title       = "At least two users must be assigned ACCOUNTADMIN role"
   description = "By default, each account has one user who has been designated as an account administrator (i.e. user granted the system-defined ACCOUNTADMIN role). Snowflake recommend designating at least one other user as an account administrator. This helps ensure that your account always has at least one user who can perform account-level tasks, particularly if one of your account administrators is unable to log in."
   sql         = query.iam_user_accountadmin_role_grant_count.sql

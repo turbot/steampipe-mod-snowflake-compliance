@@ -1,4 +1,4 @@
-To obtain the latest version of the official guide, please visit [Snowflake security overview and best practices](https://community.snowflake.com/s/article/Snowflake-Security-Overview-and-Best-Practices).
+To obtain the latest version of the official guide, please visit [Snowflake Security Overview and Best Practices](https://community.snowflake.com/s/article/Snowflake-Security-Overview-and-Best-Practices).
 
 ## Overview
 
