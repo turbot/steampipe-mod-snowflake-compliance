@@ -45,7 +45,7 @@ select
       applied_network_policy
     group by
       name) is null then
-    'Network policy not set in account.'
+    'No network policy activated in the account.'
   when has_blocked_ips then
     name || ' has all blocked IPs.'
   else
