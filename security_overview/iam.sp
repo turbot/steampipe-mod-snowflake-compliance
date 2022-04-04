@@ -38,8 +38,8 @@ control "security_overview_iam_user_default_role_is_set" {
 control "security_overview_iam_schema_managed_access" {
   title         = "Use managed access schemas to centralize grant management"
   description   = "Managed access schemas improve security by locking down privilege management on objects. In regular (i.e. non-managed) schemas, object owners (i.e. a role with the OWNERSHIP privilege on an object) can grant access on their objects to other roles, with the option to further grant those roles the ability to manage object grants. With managed access schemas, object owners lose the ability to make grant decisions. Only the schema owner (i.e. the role with the OWNERSHIP privilege on the schema) or a role with the MANAGE GRANTS privilege can grant privileges on objects in the schema, including future grants, centralizing privilege management."
-  documentation = file("./security_overview/docs/iam_schema_managed_access.md")
-  sql           = query.iam_schema_managed_access.sql
+  documentation = file("./security_overview/docs/iam_schema_managed_access_enabled.md")
+  sql           = query.iam_schema_managed_access_enabled.sql
 }
 
 # https://docs.snowflake.com/en/user-guide/admin-user-management.html
