@@ -5,8 +5,9 @@ variable "allowed_ips" {
 }
 
 variable "blocked_ips" {
-  type        = list(string)
-  default     = ["0."]
+  type = list(string)
+  # default     = ["0."]
+  default     = ["45.251.41.246", "45.251.41.247"]
   description = "A list of IPs that are denied access in Snowflake network policies."
 }
 
@@ -15,20 +16,31 @@ benchmark "security_overview_network_security" {
   description   = "Network security or isolation provides the first line of defense for Snowflake account."
   documentation = file("./security_overview/docs/network_security.md")
   children = [
-    control.security_overview_network_security_use_network_policies,
+    control.security_overview_network_security_network_policy_allowed_list_set,
+    control.security_overview_network_security_network_policy_blocked_list_set,
     control.security_overview_network_security_use_private_connectivity,
     control.security_overview_network_security_allow_firewall_to_connect_client_applications,
     control.security_overview_network_security_add_snowflake_ip_policy_firewall_rules,
   ]
 }
 
-control "security_overview_network_security_use_network_policies" {
+control "security_overview_network_security_network_policy_allowed_list_set" {
   title         = "Use network policies to allow 'known' client locations (IP ranges)"
   description   = "The network policy restricts the list of user IP addresses when exchanging an authorization code for an access or refresh token and when using a refresh token to obtain a new access token."
-  documentation = file("./security_overview/docs/network_security_use_network_policies.md")
-  sql           = query.use_network_policies.sql
+  documentation = file("./security_overview/docs/network_security_network_policy_allowed_list_set.md")
+  sql           = query.network_policy_allowed_list_set.sql
   param "allowed_ips" {
     default = var.allowed_ips
+  }
+}
+
+control "security_overview_network_security_network_policy_blocked_list_set" {
+  title         = "Use network policies blocked list to deny access specific list of IPv4 addresses"
+  description   = "The network policy restricts the list of user IP addresses when exchanging an authorization code for an access or refresh token and when using a refresh token to obtain a new access token."
+  documentation = file("./security_overview/docs/network_security_network_policy_blocked_list_set.md")
+  sql           = query.network_policy_blocked_list_set.sql
+  param "blocked_ips" {
+    default = var.blocked_ips
   }
 }
 

@@ -46,7 +46,7 @@ control "security_overview_iam_schema_managed_access" {
 control "security_overview_iam_two_users_accountadmin_role" {
   title       = "At least two users must be assigned ACCOUNTADMIN role"
   description = "By default, each account has one user who has been designated as an account administrator (i.e. user granted the system-defined ACCOUNTADMIN role). Snowflake recommend designating at least one other user as an account administrator. This helps ensure that your account always has at least one user who can perform account-level tasks, particularly if one of your account administrators is unable to log in."
-  sql         = query.iam_user_accountadmin_role_grant_count.sql
+  sql         = query.iam_user_at_least_two_users_with_accountadmin_role.sql
 }
 
 control "security_overview_iam_user_accountadmin_must_not_be_default_role" {

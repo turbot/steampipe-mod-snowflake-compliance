@@ -7,7 +7,7 @@ benchmark "security_overview_data_encryption" {
     control.security_overview_data_encryption_automatic_cmk_rotation,
     control.security_overview_data_encryption_tri_secret_secure_in_database_replication,
     control.security_overview_data_encryption_enable_periodic_rekeying,
-    control.security_overview_data_encryption_use_builtin_encryption_functions,
+    control.security_overview_data_encryption_use_built_in_encryption_functions,
   ]
 }
 
@@ -35,9 +35,9 @@ control "security_overview_data_encryption_enable_periodic_rekeying" {
   sql           = query.manual_control.sql
 }
 
-control "security_overview_data_encryption_use_builtin_encryption_functions" {
+control "security_overview_data_encryption_use_built_in_encryption_functions" {
   title         = "Use built-in encryption functions in addition to the transparent encryption to encrypt/decrypt certain columns"
   description   = "To encrypt/decrypt certain columns in addition to the transparent encryption provided by Snowflake, use the built-in encryption functions."
-  documentation = file("./security_overview/docs/data_encryption_use_builtin_encryption_functions.md")
+  documentation = file("./security_overview/docs/data_encryption_use_built_in_encryption_functions.md")
   sql           = query.manual_control.sql
 }
