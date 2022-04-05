@@ -13,7 +13,7 @@ brew tap turbot/tap
 brew install steampipe
 
 steampipe -v
-steampipe version 0.13.3
+steampipe version 0.13.5
 ```
 
 2. Install the Snowflake plugin
@@ -45,7 +45,7 @@ steampipe check benchmark.security_overview_iam
 
 Use Steampipe introspection to view all current controls:
 
-```
+```shell
 steampipe query "select resource_name from steampipe_control"
 ```
 
