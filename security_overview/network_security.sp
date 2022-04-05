@@ -29,6 +29,7 @@ control "security_overview_network_security_network_policy_allowed_list_set" {
   description   = "The network policy restricts the list of user IP addresses when exchanging an authorization code for an access or refresh token and when using a refresh token to obtain a new access token."
   documentation = file("./security_overview/docs/network_security_network_policy_allowed_list_set.md")
   sql           = query.network_policy_allowed_list_set.sql
+
   param "allowed_ips" {
     default = var.allowed_ips
   }
@@ -39,6 +40,7 @@ control "security_overview_network_security_network_policy_blocked_list_set" {
   description   = "The network policy restricts the list of user IP addresses when exchanging an authorization code for an access or refresh token and when using a refresh token to obtain a new access token."
   documentation = file("./security_overview/docs/network_security_network_policy_blocked_list_set.md")
   sql           = query.network_policy_blocked_list_set.sql
+
   param "blocked_ips" {
     default = var.blocked_ips
   }

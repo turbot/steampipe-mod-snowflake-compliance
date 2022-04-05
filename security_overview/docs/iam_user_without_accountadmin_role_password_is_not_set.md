@@ -3,7 +3,6 @@
 With federated authentication enabled for an account, Snowflake still allows maintaining and using Snowflake user credentials (login name and password). In other words:
 
 - Account and security administrators can still create users with passwords maintained in Snowflake.
-
 - Users can still log into Snowflake using their Snowflake credentials.
 
 However, if federated authentication is enabled for account, Snowflake does **not** recommend maintaining user passwords in Snowflake. Instead, user passwords should be maintained solely in the IdP.
