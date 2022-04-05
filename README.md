@@ -1,6 +1,6 @@
 # Snowflake Compliance Scanning Tool
 
-20+ checks covering industry defined security best practices across all Snowflake accounts.
+15+ checks covering industry defined security best practices across all Snowflake accounts.
 
 ![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/init-mod/docs/images/snowflake_compliance_mod_output.png)
 
