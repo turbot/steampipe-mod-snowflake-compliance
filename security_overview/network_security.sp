@@ -6,8 +6,7 @@ variable "allowed_ips" {
 
 variable "blocked_ips" {
   type = list(string)
-  # default     = ["0."]
-  default     = ["45.251.41.246", "45.251.41.247"]
+  default     = ["0."]
   description = "A list of IPs that are denied access in Snowflake network policies."
 }
 
