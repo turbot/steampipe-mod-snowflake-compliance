@@ -9,4 +9,3 @@ benchmark "security_overview" {
     benchmark.security_overview_network_security,
   ]
 }
-
