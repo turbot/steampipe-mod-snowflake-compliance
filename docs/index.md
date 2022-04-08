@@ -47,7 +47,7 @@ steampipe check all
 Run a single benchmark:
 
 ```shell
-steampipe check benchmark.security_overview_iam
+steampipe check benchmark.security_overview
 ```
 
 Run a specific control:

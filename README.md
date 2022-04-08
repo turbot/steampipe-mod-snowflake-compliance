@@ -40,7 +40,7 @@ steampipe check all
 Run an individual benchmark:
 
 ```shell
-steampipe check benchmark.security_overview_iam
+steampipe check benchmark.security_overview
 ```
 
 Use Steampipe introspection to view all current controls:
