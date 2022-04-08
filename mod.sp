@@ -12,10 +12,11 @@ mod "snowflake_compliance" {
     description = "Run individual configuration, compliance and security controls or full compliance benchmarks across all your Snowflake accounts using Steampipe."
     image       = "/images/mods/turbot/snowflake-compliance-social-graphic.png"
   }
-  
-  requires {
+
+  require {
+    steampipe = "0.13.1"
     plugin "snowflake" {
-      version = "0.0.1"
+      version = "0.0.2"
     }
   }
 }
