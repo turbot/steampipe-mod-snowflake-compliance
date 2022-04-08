@@ -22,4 +22,3 @@ select
   account
 from
   snowflake_user;
-

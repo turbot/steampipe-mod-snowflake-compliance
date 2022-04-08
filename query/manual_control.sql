@@ -8,4 +8,3 @@ select
 from
   snowflake_user
 limit 1;
-

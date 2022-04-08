@@ -59,4 +59,3 @@ from
   left join analysis on sap.account = analysis.account
 where
   key = 'NETWORK_POLICY';
-

@@ -25,4 +25,3 @@ from
   users_with_account_admin_role
 group by
   account;
-
