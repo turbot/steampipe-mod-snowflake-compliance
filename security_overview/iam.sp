@@ -11,6 +11,10 @@ benchmark "security_overview_iam" {
     control.security_overview_iam_user_accountadmin_must_not_be_default_role,
     control.security_overview_iam_user_with_accountadmin_role_have_email
   ]
+
+  tags = merge(local.security_overview_common_tags, {
+    type = "Benchmark"
+  })
 }
 
 # https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#managing-users-with-federated-authentication-enabled

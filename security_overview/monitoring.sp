@@ -11,6 +11,10 @@ benchmark "security_overview_monitoring" {
   children = [
     control.security_overview_monitoring_users_for_password_rotation
   ]
+
+  tags = merge(local.security_overview_common_tags, {
+    type = "Benchmark"
+  })
 }
 
 control "security_overview_monitoring_users_for_password_rotation" {

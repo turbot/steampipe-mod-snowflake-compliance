@@ -21,6 +21,10 @@ benchmark "security_overview_network_security" {
     control.security_overview_network_security_allow_firewall_to_connect_client_applications,
     control.security_overview_network_security_add_snowflake_ip_policy_firewall_rules,
   ]
+
+  tags = merge(local.security_overview_common_tags, {
+    type = "Benchmark"
+  })
 }
 
 control "security_overview_network_security_network_policy_allowed_list_set" {
