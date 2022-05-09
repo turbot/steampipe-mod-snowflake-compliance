@@ -6,9 +6,9 @@ repository: "https://github.com/turbot/steampipe-mod-snowflake-compliance"
 
 Run individual configuration, compliance and security controls or full compliance benchmarks for `Security Overview and Best Practices` across all your Snowflake accounts.
 
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-benchmark-screenshots/docs/snowflake_compliance_dashboard.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-benchmark-screenshots/docs/snowflake_compliance_best_practices.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-benchmark-screenshots/docs/snowflake_compliance_terminal.png" width="50%" type="thumbnail"/>
+<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_dashboard.png" width="50%" type="thumbnail"/>
+<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_best_practices.png" width="50%" type="thumbnail"/>
+<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_terminal.png" width="50%" type="thumbnail"/>
 
 ## References
 
