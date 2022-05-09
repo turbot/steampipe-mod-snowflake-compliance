@@ -6,7 +6,7 @@ Run checks in a dashboard:
 ![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_dashboard.png)
 
 Or in a terminal:
-![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/images/snowflake_compliance_terminal.png)
+![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_terminal.png)
 
 Includes support for:
 * [Snowflake Security Overview and Best Practices](https://hub.steampipe.io/mods/turbot/snowflake_compliance/controls/benchmark.security_overview)
