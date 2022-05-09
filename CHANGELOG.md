@@ -1,3 +1,9 @@
+## v0.3 [2022-05-09]
+
+_Enhancements_
+
+- Updated docs/index.md and README with new dashboard screenshots and latest format. ([#5](https://github.com/turbot/steampipe-mod-snowflake-compliance/pull/5))
+
 ## v0.2 [2022-05-06]
 
 _Enhancements_
