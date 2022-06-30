@@ -1,4 +1,4 @@
-# Snowflake Compliance Scanning Tool
+# Snowflake Compliance Mod for Steampipe
 
 15+ checks covering industry defined security best practices across all Snowflake accounts.
 
