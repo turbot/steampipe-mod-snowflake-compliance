@@ -23,9 +23,8 @@ mod "snowflake_compliance" {
   }
 
   require {
-    steampipe = "0.13.1"
     plugin "snowflake" {
-      version = "0.0.2"
+      min_version = "0.0.2"
     }
   }
 }
