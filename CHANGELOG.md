@@ -1,3 +1,13 @@
+## v0.4 [2023-11-03]
+
+_Breaking changes_
+
+- Updated the plugin dependency section of the mod to use `min_version` instead of `version`. ([#13](https://github.com/turbot/steampipe-mod-snowflake-compliance/pull/13))
+
+_Bug fixes_
+
+- Fixed dashboard localhost URLs in README and index doc. ([#9](https://github.com/turbot/steampipe-mod-snowflake-compliance/pull/9))
+
 ## v0.3 [2022-05-09]
 
 _Enhancements_
