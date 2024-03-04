@@ -1,4 +1,7 @@
-# Snowflake Compliance Mod for Steampipe
+# Snowflake Compliance Mod for Powerpipe
+
+> [!IMPORTANT]
+> Steampipe mods are [migrating to Powerpipe format](https://powerpipe.io) to gain new features. This mod currently works with both Steampipe and Powerpipe, but will only support Powerpipe from v1.x onward.
 
 15+ checks covering industry defined security best practices across all Snowflake accounts.
 
@@ -8,99 +11,114 @@ Run checks in a dashboard:
 Or in a terminal:
 ![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_terminal.png)
 
-Includes support for:
-* [Snowflake Security Overview and Best Practices](https://hub.steampipe.io/mods/turbot/snowflake_compliance/controls/benchmark.security_overview)
+## Documentation
 
-## Getting started
+- **[Benchmarks and controls →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/controls)**
+- **[Named queries →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/queries)**
+
+Includes support for:
+
+- [Snowflake Security Overview and Best Practices](https://hub.steampipe.io/mods/turbot/snowflake_compliance/controls/benchmark.security_overview)
+
+## Getting Started
 
 ### Installation
 
-Download and install Steampipe (https://steampipe.io/downloads). Or use Brew:
+Install Powerpipe (https://powerpipe.io/downloads), or use Brew:
 
 ```sh
-brew tap turbot/tap
-brew install steampipe
+brew install turbot/tap/powerpipe
 ```
 
-Install the Snowflake plugin with [Steampipe](https://steampipe.io):
+This mod also requires [Steampipe](https://steampipe.io) with the [Snowflake plugin](https://hub.steampipe.io/plugins/turbot/snowflake) as the data source. Install Steampipe (https://steampipe.io/downloads), or use Brew:
 
 ```sh
+brew install turbot/tap/steampipe
 steampipe plugin install snowflake
 ```
 
-Clone:
+This mod uses the credentials configured in the [Steampipe Snowflake plugin](https://hub.steampipe.io/plugins/turbot/snowflake#credentials).
+
+Finally, install the mod:
 
 ```sh
-git clone https://github.com/turbot/steampipe-mod-snowflake-compliance.git
-cd steampipe-mod-snowflake-compliance
+mkdir dashboards
+cd dashboards
+powerpipe mod init
+powerpipe mod install github.com/turbot/powerpipe-mod-snowflake-compliance
 ```
 
-### Usage
+### Browsing Dashboards
 
-Start your dashboard server to get started:
+Start Steampipe as the data source:
 
 ```sh
-steampipe dashboard
+steampipe service start
 ```
 
-By default, the dashboard interface will then be launched in a new browser
-window at http://localhost:9194. From here, you can run benchmarks by
-selecting one or searching for a specific one.
+Start the dashboard server:
+
+```sh
+powerpipe server
+```
+
+Browse and view your dashboards at **http://localhost:9033**.
+
+### Running Checks in Your Terminal
 
 Instead of running benchmarks in a dashboard, you can also run them within your
-terminal with the `steampipe check` command:
+terminal with the `powerpipe benchmark` command:
 
-Run all benchmarks:
+List available benchmarks:
 
 ```sh
-steampipe check all
+powerpipe benchmark list
 ```
 
-Run a single benchmark:
+Run a benchmark:
 
 ```sh
-steampipe check benchmark.security_overview
-```
-
-Run a specific control:
-
-```sh
-steampipe check control.security_overview_iam_user_default_role_is_set
+powerpipe benchmark run snowflake_compliance.benchmark.security_overview_network_security
 ```
 
 Different output formats are also available, for more information please see
-[Output Formats](https://steampipe.io/docs/reference/cli/check#output-formats).
+[Output Formats](https://powerpipe.io/docs/reference/cli/benchmark#output-formats).
 
-### Credentials
+### Common and Tag Dimensions
 
-This mod uses the credentials configured in the [Steampipe Snowflake plugin](https://hub.steampipe.io/plugins/turbot/snowflake).
+The benchmark queries use common properties and tags that are defined in the form of a default list of strings in the `variables.sp` file. These properties can be overwritten in several ways:
 
-### Configuration
+It's easiest to setup your vars file, starting with the sample:
 
-Several benchmarks have [input variables](https://steampipe.io/docs/using-steampipe/mod-variables) that can be configured to better match your environment and requirements. Each variable has a default defined in its source file, e.g., `security_overview/network_security.sp`, but these can be overriden in several ways:
+```sh
+cp powerpipe.ppvar.example powerpipe.ppvars
+vi powerpipe.ppvars
+```
 
-- Copy and rename the `steampipe.spvars.example` file to `steampipe.spvars`, and then modify the variable values inside that file
-- Pass in a value on the command line:
-  ```sh
-  steampipe check benchmark.security_overview_network_security --var 'allowed_ips=["192.168.1.0/24", "172.10.1.0/24"]'
-  ```
-- Set an environment variable:
-  ```sh
-  SP_VAR_allowed_ips='["192.168.1.0/24", "172.10.1.0/24"]' steampipe check benchmark.security_overview_network_security
-  ```
-  - Note: When using environment variables, if the variable is defined in `steampipe.spvars` or passed in through the command line, either of those will take precedence over the environment variable value. For more information on variable definition precedence, please see the link below.
+Alternatively you can pass variables on the command line:
 
-These are only some of the ways you can set variables. For a full list, please see [Passing Input Variables](https://steampipe.io/docs/using-steampipe/mod-variables#passing-input-variables).
+```sh
+powerpipe benchmark run snowflake_compliance.benchmark.security_overview_network_security --var 'allowed_ips=["192.168.1.0/24", "172.10.1.0/24"]'
+```
 
-## Contributing
+Or through environment variables:
 
-If you have an idea for additional controls or just want to help maintain and extend this mod ([or others](https://github.com/topics/steampipe-mod)) we would love you to join the community and start contributing.
+```sh
+export PP_VAR_allowed_ips='["192.168.1.0/24", "172.10.1.0/24"]'
+powerpipe benchmark run snowflake_compliance.benchmark.security_overview_network_security
+```
 
-- **[Join #steampipe on Slack →](https://turbot.com/community/join)** and hang out with other Mod developers.
+## Open Source & Contributing
 
-Please see the [contribution guidelines](https://github.com/turbot/steampipe/blob/main/CONTRIBUTING.md) and our [code of conduct](https://github.com/turbot/steampipe/blob/main/CODE_OF_CONDUCT.md). All contributions are subject to the [Apache 2.0 open source license](https://github.com/turbot/steampipe-mod-snowflake-compliance/blob/main/LICENSE).
+This repository is published under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0). Please see our [code of conduct](https://github.com/turbot/.github/blob/main/CODE_OF_CONDUCT.md). We look forward to collaborating with you!
 
-Want to help but not sure where to start? Pick up one of the `help wanted` issues:
+[Steampipe](https://steampipe.io) and [Powerpipe](https://powerpipe.io) are products produced from this open source software, exclusively by [Turbot HQ, Inc](https://turbot.com). They are distributed under our commercial terms. Others are allowed to make their own distribution of the software, but cannot use any of the Turbot trademarks, cloud services, etc. You can learn more in our [Open Source FAQ](https://turbot.com/open-source).
 
-- [Steampipe](https://github.com/turbot/steampipe/labels/help%20wanted)
+## Get Involved
+
+**[Join #powerpipe on Slack →](https://turbot.com/community/join)**
+
+Want to help but don't know where to start? Pick up one of the `help wanted` issues:
+
+- [Powerpipe](https://github.com/turbot/powerpipe/labels/help%20wanted)
 - [Snowflake Compliance Mod](https://github.com/turbot/steampipe-mod-snowflake-compliance/labels/help%20wanted)
