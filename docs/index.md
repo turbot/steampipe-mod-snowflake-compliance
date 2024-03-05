@@ -2,14 +2,9 @@
 
 Run individual configuration, compliance and security controls or full compliance benchmarks for `Security Overview and Best Practices` across all your Snowflake accounts.
 
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_dashboard.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_best_practices.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_terminal.png" width="50%" type="thumbnail"/>
-
-## Documentation
-
-- **[Benchmarks and controls →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/controls)**
-- **[Named queries →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/queries)**
+<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_dashboard.png" width="50%" type="thumbnail"/>
+<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_best_practices.png" width="50%" type="thumbnail"/>
+<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_terminal.png" width="50%" type="thumbnail"/>
 
 ## References
 
@@ -20,6 +15,11 @@ Run individual configuration, compliance and security controls or full complianc
 [Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
 
 [Steampipe Mods](https://steampipe.io/docs/reference/mod-resources#mod) are collections of `named queries`, and codified `controls` that can be used to test current configuration of your cloud resources against a desired configuration.
+
+## Documentation
+
+- **[Benchmarks and controls →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/controls)**
+- **[Named queries →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/queries)**
 
 ## Getting Started
 
@@ -46,7 +46,7 @@ Finally, install the mod:
 mkdir dashboards
 cd dashboards
 powerpipe mod init
-powerpipe mod install github.com/turbot/powerpipe-mod-snowflake-compliance
+powerpipe mod install github.com/turbot/steampipe-mod-snowflake-compliance
 ```
 
 ### Browsing Dashboards

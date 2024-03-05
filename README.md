@@ -6,19 +6,19 @@
 15+ checks covering industry defined security best practices across all Snowflake accounts.
 
 Run checks in a dashboard:
-![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_dashboard.png)
+![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_dashboard.png)
 
 Or in a terminal:
-![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_terminal.png)
-
-## Documentation
-
-- **[Benchmarks and controls →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/controls)**
-- **[Named queries →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/queries)**
+![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_terminal.png)
 
 Includes support for:
 
 - [Snowflake Security Overview and Best Practices](https://hub.steampipe.io/mods/turbot/snowflake_compliance/controls/benchmark.security_overview)
+
+## Documentation
+
+- **[Benchmarks and controls →](https://hub-powerpipe-io-git-development-turbot.vercel.app/mods/turbot/snowflake_compliance/controls)**
+- **[Named queries →](https://hub-powerpipe-io-git-development-turbot.vercel.app/mods/turbot/snowflake_compliance/queries)**
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ Finally, install the mod:
 mkdir dashboards
 cd dashboards
 powerpipe mod init
-powerpipe mod install github.com/turbot/powerpipe-mod-snowflake-compliance
+powerpipe mod install github.com/turbot/steampipe-mod-snowflake-compliance
 ```
 
 ### Browsing Dashboards
