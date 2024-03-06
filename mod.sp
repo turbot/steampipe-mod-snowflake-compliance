@@ -1,5 +1,5 @@
 mod "snowflake_compliance" {
-  # hub metadata
+  # Hub metadata
   title         = "Snowflake Compliance"
   description   = "Run individual configuration, compliance and security controls or full compliance benchmarks across all your Snowflake accounts using Powerpipe and Steampipe."
   color         = "#29B5E8"

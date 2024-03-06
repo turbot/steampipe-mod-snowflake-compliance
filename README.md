@@ -1,24 +1,23 @@
 # Snowflake Compliance Mod for Powerpipe
 
 > [!IMPORTANT]
-> Steampipe mods are [migrating to Powerpipe format](https://powerpipe.io) to gain new features. This mod currently works with both Steampipe and Powerpipe, but will only support Powerpipe from v1.x onward.
+> [Powerpipe](https://powerpipe.io) is now the preferred way to run this mod! [Migrating from Steampipe →](https://powerpipe.io/blog/migrating-from-steampipe)
+>
+> All v0.x versions of this mod will work in both Steampipe and Powerpipe, but v1.0.0 onwards will be in Powerpipe format only.
 
 15+ checks covering industry defined security best practices across all Snowflake accounts.
 
 Run checks in a dashboard:
-![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_dashboard.png)
+![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_dashboard.png)
 
 Or in a terminal:
-![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_terminal.png)
+![image](https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_terminal.png)
 
-Includes support for:
-
-- [Snowflake Security Overview and Best Practices](https://hub.steampipe.io/mods/turbot/snowflake_compliance/controls/benchmark.security_overview)
 
 ## Documentation
 
-- **[Benchmarks and controls →](https://hub-powerpipe-io-git-development-turbot.vercel.app/mods/turbot/snowflake_compliance/controls)**
-- **[Named queries →](https://hub-powerpipe-io-git-development-turbot.vercel.app/mods/turbot/snowflake_compliance/queries)**
+- **[Benchmarks and controls →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/controls)**
+- **[Named queries →](https://hub.powerpipe.io/mods/turbot/snowflake_compliance/queries)**
 
 ## Getting Started
 
@@ -36,8 +35,6 @@ This mod also requires [Steampipe](https://steampipe.io) with the [Snowflake plu
 brew install turbot/tap/steampipe
 steampipe plugin install snowflake
 ```
-
-This mod uses the credentials configured in the [Steampipe Snowflake plugin](https://hub.steampipe.io/plugins/turbot/snowflake#credentials).
 
 Finally, install the mod:
 
@@ -84,15 +81,15 @@ powerpipe benchmark run snowflake_compliance.benchmark.security_overview_network
 Different output formats are also available, for more information please see
 [Output Formats](https://powerpipe.io/docs/reference/cli/benchmark#output-formats).
 
-### Common and Tag Dimensions
+### Configure Variables
 
-The benchmark queries use common properties and tags that are defined in the form of a default list of strings in the `variables.sp` file. These properties can be overwritten in several ways:
+Several benchmarks have [input variables](https://powerpipe.io/docs/build/mod-variables#input-variables) that can be configured to better match your environment and requirements. Each variable has a default defined in its source file, e.g., `security_overview/security_overview.sp`, but these can be overwritten in several ways:
 
 It's easiest to setup your vars file, starting with the sample:
 
 ```sh
-cp powerpipe.ppvar.example powerpipe.ppvars
-vi powerpipe.ppvars
+cp steampipe.spvars.example steampipe.spvars
+vi steampipe.spvars
 ```
 
 Alternatively you can pass variables on the command line:

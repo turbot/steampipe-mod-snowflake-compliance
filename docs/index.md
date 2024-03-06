@@ -2,19 +2,9 @@
 
 Run individual configuration, compliance and security controls or full compliance benchmarks for `Security Overview and Best Practices` across all your Snowflake accounts.
 
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_dashboard.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_best_practices.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/add-new-checks/docs/snowflake_compliance_terminal.png" width="50%" type="thumbnail"/>
-
-## References
-
-[Snowflake](https://snowflake.com/) is a single, integrated platform delivered as-a-service. It features storage, compute, and global services layers that are physically separated but logically integrated. Data workloads scale independently from one another, making it an ideal platform for data warehousing, data lakes, data engineering, data science, modern data sharing, and developing data applications.
-
-[Snowflake Security Overview and Best Practices](https://community.snowflake.com/s/article/Snowflake-Security-Overview-and-Best-Practices) provides an overview of security features and best practice guidelines for securing your data in Snowflake.
-
-[Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
-
-[Steampipe Mods](https://steampipe.io/docs/reference/mod-resources#mod) are collections of `named queries`, and codified `controls` that can be used to test current configuration of your cloud resources against a desired configuration.
+<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_dashboard.png" width="50%" type="thumbnail"/>
+<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_best_practices.png" width="50%" type="thumbnail"/>
+<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-snowflake-compliance/main/docs/snowflake_compliance_terminal.png" width="50%" type="thumbnail"/>
 
 ## Documentation
 
@@ -37,8 +27,6 @@ This mod also requires [Steampipe](https://steampipe.io) with the [Snowflake plu
 brew install turbot/tap/steampipe
 steampipe plugin install snowflake
 ```
-
-This mod uses the credentials configured in the [Steampipe Snowflake plugin](https://hub.steampipe.io/plugins/turbot/snowflake#credentials).
 
 Finally, install the mod:
 
@@ -85,15 +73,15 @@ powerpipe benchmark run snowflake_compliance.benchmark.security_overview_network
 Different output formats are also available, for more information please see
 [Output Formats](https://powerpipe.io/docs/reference/cli/benchmark#output-formats).
 
-### Common and Tag Dimensions
+### Configure Variables
 
-The benchmark queries use common properties and tags that are defined in the form of a default list of strings in the `variables.sp` file. These properties can be overwritten in several ways:
+Several benchmarks have [input variables](https://powerpipe.io/docs/build/mod-variables#input-variables) that can be configured to better match your environment and requirements. Each variable has a default defined in its source file, e.g., `security_overview/security_overview.sp`, but these can be overwritten in several ways:
 
 It's easiest to setup your vars file, starting with the sample:
 
 ```sh
-cp powerpipe.ppvar.example powerpipe.ppvars
-vi powerpipe.ppvars
+cp steampipe.spvars.example steampipe.spvars
+vi steampipe.spvars
 ```
 
 Alternatively you can pass variables on the command line:
