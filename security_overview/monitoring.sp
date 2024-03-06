@@ -21,7 +21,7 @@ control "security_overview_monitoring_users_for_password_rotation" {
   title         = "User passwords should be rotated at regular intervals"
   description   = "User passwords should be rotated at regular intervals to remain compliant."
   documentation = file("./security_overview/docs/monitoring_users_for_password_rotation.md")
-  sql           = query.monitoring_user_password_rotated_regularly.sql
+  query         = query.monitoring_user_password_rotated_regularly
 
   param "password_age_max_days" {
     default = var.password_age_max_days
